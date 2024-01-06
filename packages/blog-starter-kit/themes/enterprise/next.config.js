@@ -31,19 +31,26 @@ const getRedirectionRules = async () => {
 	const data = await request(GQL_ENDPOINT, query);
 
 	if (!data.publication) {
-		throw new Error('Please ensure you have set the env var NEXT_PUBLIC_HASHNODE_PUBLICATION_HOST correctly.');
+		throw 'Please ensure you have set the env var NEXT_PUBLIC_HASHNODE_PUBLICATION_HOST correctly.';
 	}
 
 	const redirectionRules = data.publication.redirectionRules;
 
 	// convert to next.js redirects format
 	const redirects = redirectionRules
-		.filter((rule) => rule.source.indexOf('*') === -1)
-		.map((rule) => ({
-			source: rule.source,
-			destination: rule.destination,
-			permanent: rule.type === 'PERMANENT',
-		}));
+		.filter((rule) => {
+			// Hashnode gives an option to set a wildcard redirect,
+			// but it doesn't work properly with Next.js
+			// the solution is to filter out all the rules with wildcard and use static redirects for now
+			return rule.source.indexOf('*') === -1;
+		})
+		.map((rule) => {
+			return {
+				source: rule.source,
+				destination: rule.destination,
+				permanent: rule.type === 'PERMANENT',
+			};
+		});
 
 	return redirects;
 };
@@ -84,16 +91,6 @@ const config = {
 	async redirects() {
 		return await getRedirectionRules();
 	},
-	rewrites: async () => [
-		{
-			source: "/blog",
-			destination: "https://starter-kit-three-theta.vercel.app/blog",
-		},
-		{
-			source: "/blog/:path*",
-			destination: "https://starter-kit-three-theta.vercel.app/blog/:path*",
-		},
-	],
 };
 
 module.exports = config;
