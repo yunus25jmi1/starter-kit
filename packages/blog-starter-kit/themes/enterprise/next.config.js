@@ -90,11 +90,7 @@ const config = {
 	},
 	async redirects() {
 		return await getRedirectionRules();
-	},
-};
-
-module.exports = config;
-async rewrites() {
+	},async rewrites() {
     return [
       {
         source: "/blog",
@@ -106,3 +102,7 @@ async rewrites() {
       },
     ];
   },
+};
+
+module.exports = config;
+
