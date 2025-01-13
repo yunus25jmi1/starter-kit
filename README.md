@@ -14,7 +14,7 @@
   <a href="https://hashnode.com">
     <img alt="" src="https://img.shields.io/badge/LICENSE%20%7C%20MIT-000.svg?style=for-the-badge">
   </a>
-  <a href="https://discord.gg/hashnode">
+  <a href="https://discord.gg/qsAQfxX">
     <img alt="" src="https://img.shields.io/badge/Join%20the%20community-black.svg?style=for-the-badge&logo=discord&labelColor=000000&logoWidth=20">
   </a>
 </p>
@@ -205,6 +205,6 @@ Feel free to create an [issue](https://github.com/Hashnode/starter-kit/issues) w
 
 ## Reach out for help
 
-You can discuss ideas, ask questions, and meet other members from the Hashnode community in our [Discord](https://discord.gg/hashnode). You can also create tickets on [our intercom](https://hashnode.com/#support) to find support.
+You can discuss ideas, ask questions, and meet other members from the Hashnode community in our [Discord](https://discord.gg/qsAQfxX). You can also create tickets on [our intercom](https://hashnode.com/#support) to find support.
 
 If you like, you can also DM us on [X](https://x.com/hashnode)!
